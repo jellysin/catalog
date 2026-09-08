@@ -15,6 +15,6 @@ jobs:
       issues: write
       pull-requests: write
       actions: write
-    uses: jellysin/plugin-tooling/.github/workflows/release-please.yml@f630c5ac55254f5c88ef3e3f323bccb111c5d471 # initial 1.0.0
+    uses: jellysin/plugin-tooling/.github/workflows/release-please.yml@18035406096fc160acccc0afa7238aa314f0a4aa # v1.0.0
     with:
       publish: false
