@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jellysin/catalog/compare/v1.0.0...v1.0.1) (2026-09-08)
+
+
+### Bug Fixes
+
+* validate complete release inventories during catalog updates ([#4](https://github.com/jellysin/catalog/issues/4)) ([9efa4a2](https://github.com/jellysin/catalog/commit/9efa4a2ed500c91d225b325500ec492b5a8a416c))
+
 ## 1.0.0 (2026-09-08)
 
 
