@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: jellysin/plugin-tooling/actions/check@18035406096fc160acccc0afa7238aa314f0a4aa # v1.0.0
+      - uses: jellysin/plugin-tooling/actions/check@41f9ccffa1093d7dda8c3f7f634fad24d08cdc7a # v1.0.1
         with:
           catalog: 'true'
       - name: Validate workflows
