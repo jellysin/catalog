@@ -7,17 +7,16 @@ in Jellyfin's plugin repository settings:
 https://raw.githubusercontent.com/jellysin/catalog/main/manifest.json
 ```
 
-The catalog includes [JellySin Last.fm 1.0.0](https://github.com/jellysin/jellyfin-plugin-lastfm/releases/tag/v1.0.0),
-verified through a fresh Jellyfin 12 installation and restart checks. New versions
-appear after their immutable release is verified and the resulting catalog pull
-request is merged.
+The catalog is empty. [JellySin Last.fm](https://github.com/jellysin/plugin-lastfm)
+is in development; its premature 1.0.0 release has been withdrawn. No plugin
+release is currently approved for installation from this catalog.
 
 ## Publication
 
 An allowlist binds each plugin GUID to one public source repository and the
-approved `.github/workflows/release.yml`. The updater runs at minutes 17 and 47
-each hour and can also be dispatched manually. GitHub scheduled runs can be delayed;
-this is a polling interval, not a publication latency guarantee.
+approved `.github/workflows/release.yml`. When enabled, the updater is configured
+for minutes 17 and 47 each hour and supports manual dispatch. GitHub scheduled
+runs can be delayed; this is a polling interval, not a publication latency guarantee.
 
 Pinned shared tooling verifies the actual GitHub-signed provenance of all four
 release artifacts against the repository, workflow, commit and tag. Releases must
