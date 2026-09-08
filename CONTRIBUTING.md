@@ -1,0 +1,31 @@
+# Contributing
+
+Create a feature branch from main and open a PR with a Conventional Commit title.
+Squash merges are used. Required checks use `strict: false`, so branches need not
+be rebased solely to satisfy a branch-up-to-date gate.
+
+CI uses SHA-pinned shared tooling to validate catalog structure, plugin identities,
+repository allowlisting, pinned Actions and policy documents. It also runs
+actionlint. Locally, use a checkout of the exact tooling commit pinned in CI:
+
+```sh
+python ../plugin-tooling/tools.py validate-catalog
+python ../plugin-tooling/tools.py check-policy
+actionlint
+```
+
+Run these commands in this catalog repository. Local catalog reconciliation also
+requires GitHub CLI for signature verification and a GITHUB_TOKEN/GH_TOKEN for
+rate-limited API reads. It downloads data but never runs code from plugin archives.
+
+The updater opens `automation/catalog` as a PR, then explicitly dispatches CI.
+Do not write directly to main or bypass required checks. A failed update keeps
+the previous manifest intact. Resolve the release or allowlist problem and retry
+the updater; never replace an already published release asset.
+
+Source releases must have immutable releases enabled before publication. The
+catalog trusts the approved release workflow, not arbitrary self-declared JSON.
+Workflow and allowlist changes require careful review of the trust boundary.
+
+Release-please manages optional catalog snapshot tags and the changelog. It does
+not control individual plugin versions; each plugin owns its own release process.

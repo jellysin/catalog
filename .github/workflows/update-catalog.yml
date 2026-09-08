@@ -1,0 +1,46 @@
+name: Update catalog
+on:
+  schedule:
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: catalog-update
+  cancel-in-progress: false
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: jellysin/plugin-tooling/actions/catalog@18035406096fc160acccc0afa7238aa314f0a4aa # v1.0.0
+        with:
+          token: ${{ github.token }}
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        id: catalog-pr
+        with:
+          token: ${{ github.token }}
+          branch: automation/catalog
+          base: main
+          delete-branch: true
+          add-paths: manifest.json
+          commit-message: 'chore: add verified plugin releases to catalog'
+          title: 'chore: add verified plugin releases to catalog'
+          body: |
+            Adds published plugin versions after checking the allowlist, immutable release state,
+            signed provenance, exact source tag and commit, archive contents and checksums.
+
+            Existing catalog versions are preserved. CI is explicitly dispatched on this branch.
+      - name: Explicitly dispatch CI for bot pull request
+        if: steps.catalog-pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref automation/catalog
