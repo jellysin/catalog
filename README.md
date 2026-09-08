@@ -24,9 +24,19 @@ be immutable. The ZIP's SHA-256, Jellyfin MD5, size, member paths, permissions,
 file allowlist and CRC are checked before any plugin repository file changes.
 
 The updater opens a PR using only this repository's GITHUB_TOKEN and explicitly
-dispatches CI on its branch. Required checks and normal PR review/merge behavior
-apply. Plugin source repositories have no write access here, and no release App
+dispatches CI on its branch. It then requests squash auto-merge for that exact
+generated commit, subject to required checks and review rules. GitHub may require
+a maintainer to approve the bot-triggered workflow before those checks can pass.
+Plugin source repositories have no write access here, and no release App
 or personal access token is needed.
+
+Helper Action updates are separate from plugin manifest updates. Renovate opens
+PRs for stable `jellysin/release-helper` tags, retaining full commit pins and the
+three-day minimum release age, and squash-merges them after checks and that age
+requirement pass.
+Unreleased helper commits do not trigger those stable dependency updates. Other
+dependencies retain their existing review behavior. Neither update path publishes
+a plugin, helper or Plugin Repository GitHub release.
 
 ## Adding a plugin
 
