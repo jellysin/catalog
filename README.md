@@ -7,9 +7,10 @@ in Jellyfin's plugin repository settings:
 https://raw.githubusercontent.com/jellysin/catalog/main/manifest.json
 ```
 
-The catalog starts as an empty array. Plugins appear after their first verified
-release and the resulting catalog pull request is merged. It advertises no builds
-that have not been published and verified.
+The catalog includes [JellySin Last.fm 1.0.0](https://github.com/jellysin/jellyfin-plugin-lastfm/releases/tag/v1.0.0),
+verified through a fresh Jellyfin 12 installation and restart checks. New versions
+appear after their immutable release is verified and the resulting catalog pull
+request is merged.
 
 ## Publication
 
