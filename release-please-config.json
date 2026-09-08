@@ -4,7 +4,7 @@
   "packages": {
     ".": {
       "initial-version": "1.0.0",
-      "package-name": "jellysin-catalog"
+      "package-name": "jellysin-repo"
     }
   }
 }

@@ -1,15 +1,15 @@
-# JellySin plugin catalog
+# JellySin Plugin Repository
 
-One catalog for JellySin's independent Jellyfin 12 plugins. Add this repository URL
+One plugin repository for JellySin's independent Jellyfin 12 plugins. Add this URL
 in Jellyfin's plugin repository settings:
 
 ```text
-https://raw.githubusercontent.com/jellysin/catalog/main/manifest.json
+https://raw.githubusercontent.com/jellysin/repo/main/manifest.json
 ```
 
-The catalog is empty. [JellySin Last.fm](https://github.com/jellysin/plugin-lastfm)
+The plugin repository is empty. [JellySin Last.fm](https://github.com/jellysin/plugin-lastfm)
 is in development; its premature 1.0.0 release has been withdrawn. No plugin
-release is currently approved for installation from this catalog.
+release is currently approved for installation from this plugin repository.
 
 ## Publication
 
@@ -21,11 +21,11 @@ runs can be delayed; this is a polling interval, not a publication latency guara
 Pinned shared tooling verifies the actual GitHub-signed provenance of all four
 release artifacts against the repository, workflow, commit and tag. Releases must
 be immutable. The ZIP's SHA-256, Jellyfin MD5, size, member paths, permissions,
-file allowlist and CRC are checked before any catalog file changes.
+file allowlist and CRC are checked before any plugin repository file changes.
 
 The updater opens a PR using only this repository's GITHUB_TOKEN and explicitly
 dispatches CI on its branch. Required checks and normal PR review/merge behavior
-apply. No plugin repository gets write access to this catalog, and no release App
+apply. Plugin source repositories have no write access here, and no release App
 or personal access token is needed.
 
 ## Adding a plugin
@@ -33,11 +33,11 @@ or personal access token is needed.
 Submit a PR adding a unique GUID, repository, and approved workflow to `plugins.json`.
 Review the source repository and publication workflow before adding that trust.
 The source must use the release metadata contract in
-[plugin-tooling](https://github.com/jellysin/plugin-tooling). The Last.fm descriptor
+[release-helper](https://github.com/jellysin/release-helper). The Last.fm descriptor
 is the first allowlisted plugin; no Last.fm-specific behavior exists in the updater.
 
-Existing versions are immutable catalog history. Do not replace checksums, edit
+Existing versions are immutable plugin repository history. Do not replace checksums, edit
 download URLs, or remove old compatible versions to repair an upload. Publish a
-new version instead. A failed verification leaves the entire catalog unchanged.
+new version instead. A failed verification leaves the entire plugin repository unchanged.
 
 EUPL-1.2 covers this repository's source and documentation. See CONTRIBUTING.md.
