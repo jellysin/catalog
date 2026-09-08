@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "category": "Music",
+    "description": "Connect your music: Last.fm listening, favourites, discovery and playlists for Jellyfin 12.",
+    "guid": "2034650d-a290-4a16-b195-89fb44cfb932",
+    "name": "JellySin Last.fm",
+    "overview": "Last.fm music integration for Jellyfin 12.",
+    "owner": "JellySin",
+    "versions": [
+      {
+        "changelog": "https://github.com/jellysin/jellyfin-plugin-lastfm/releases/tag/v1.0.0",
+        "checksum": "0fc002a3117b561a02b6ab40d7f0542c",
+        "sourceUrl": "https://github.com/jellysin/jellyfin-plugin-lastfm/releases/download/v1.0.0/jellyfin-plugin-lastfm-1.0.0.zip",
+        "targetAbi": "12.0.0.0",
+        "timestamp": "2026-09-08T12:29:08Z",
+        "version": "1.0.0.0"
+      }
+    ]
+  }
+]
