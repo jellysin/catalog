@@ -19,6 +19,9 @@ requires GitHub CLI for signature verification and a GITHUB_TOKEN/GH_TOKEN for
 rate-limited API reads. It downloads data but never runs code from plugin archives.
 
 The updater opens `automation/catalog` as a PR, then explicitly dispatches CI.
+GitHub may also place the PR-triggered run behind its bot-workflow approval gate.
+A maintainer reviews and approves that run; a dispatched run alone may not clear
+the required PR check. No extra App/PAT or synthetic check is used to evade it.
 Do not write directly to main or bypass required checks. A failed update keeps
 the previous manifest intact. Resolve the release or allowlist problem and retry
 the updater; never replace an already published release asset.
